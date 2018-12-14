@@ -4,14 +4,15 @@ class ToolTip extends HTMLElement {
     this._tootlTipContainer;
     this._toolTipText = "Som dummy tooltip text";
     this.attachShadow({ mode: "open" });
+    const template = document.querySelector("#tooltip-template");
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
   connectedCallback() {
     if (this.hasAttribute("text")) {
       this._toolTipText = this.getAttribute("text");
     }
-    const toolTipIcon = document.createElement("span");
-    toolTipIcon.textContent = " (?)";
+    const toolTipIcon = this.shadowRoot.querySelector("span");
     toolTipIcon.addEventListener("mouseenter", this._showToolTip.bind(this));
     toolTipIcon.addEventListener("mouseleave", this._hideToolTip.bind(this));
     this.shadowRoot.appendChild(toolTipIcon);
