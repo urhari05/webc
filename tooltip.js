@@ -3,18 +3,18 @@ class ToolTip extends HTMLElement {
     super();
     this._tootlTipContainer;
     this._toolTipText = "Som dummy tooltip text";
+    this.attachShadow({ mode: "open" });
   }
 
   connectedCallback() {
     if (this.hasAttribute("text")) {
       this._toolTipText = this.getAttribute("text");
     }
-
     const toolTipIcon = document.createElement("span");
     toolTipIcon.textContent = " (?)";
     toolTipIcon.addEventListener("mouseenter", this._showToolTip.bind(this));
     toolTipIcon.addEventListener("mouseleave", this._hideToolTip.bind(this));
-    this.appendChild(toolTipIcon);
+    this.shadowRoot.appendChild(toolTipIcon);
     this.style = "relative";
   }
   _showToolTip() {
@@ -24,10 +24,10 @@ class ToolTip extends HTMLElement {
     this._tootlTipContainer.style.color = "white";
     this._tootlTipContainer.style.position = "absolute";
     this._tootlTipContainer.style.zIndex = 10;
-    this.appendChild(this._tootlTipContainer);
+    this.shadowRoot.appendChild(this._tootlTipContainer);
   }
   _hideToolTip() {
-    this.removeChild(this._tootlTipContainer);
+    this.shadowRoot.removeChild(this._tootlTipContainer);
   }
 }
 
