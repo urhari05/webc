@@ -4,9 +4,17 @@ class ToolTip extends HTMLElement {
     this._tootlTipContainer;
     this._toolTipText = "Som dummy tooltip text";
     this.attachShadow({ mode: "open" });
-    // const template = document.querySelector("#tooltip-template");
-    // this.shadowRoot.appendChild(template.content.cloneNode(true));
-    this.shadowRoot.innerHTML = `<slot>Some Default</slot> <span>(?)</span>`;
+    this.shadowRoot.innerHTML = `
+    <style>
+        div {
+            background-color: black;
+            color: white;
+            position: absolute;
+            zIndex: 10;   
+        }
+    </style>
+    <slot>Some Default</slot> <span>(?)</span>
+    `;
   }
 
   connectedCallback() {
@@ -22,10 +30,6 @@ class ToolTip extends HTMLElement {
   _showToolTip() {
     this._tootlTipContainer = document.createElement("div");
     this._tootlTipContainer.textContent = this._toolTipText;
-    this._tootlTipContainer.style.backgroundColor = "black";
-    this._tootlTipContainer.style.color = "white";
-    this._tootlTipContainer.style.position = "absolute";
-    this._tootlTipContainer.style.zIndex = 10;
     this.shadowRoot.appendChild(this._tootlTipContainer);
   }
 

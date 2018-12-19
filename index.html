@@ -7,12 +7,8 @@
     <title>Web Components</title>
   </head>
   <script src="tooltip.js"></script>
+  <script src="confirm-link.js"></script>
   <body>
-    <!--
-      <template id="tooltip-template">
-        <slot>Some Default</slot> <span>(?)</span>
-      </template>
-    -->
     <p>
       <hs-tooltip text="Web Components are a set of standards"
         >My Webcomponents</hs-tooltip
@@ -21,5 +17,7 @@
     </p>
 
     <hs-tooltip></hs-tooltip>
+
+    <a is="hs-anchor" href="http://www.google.com">Go to</a>
   </body>
 </html>
