@@ -11,18 +11,10 @@
       }
     </style>
   </head>
-  <script src="tooltip.js"></script>
-  <script src="confirm-link.js"></script>
+  <script src="collapse-graph.js"></script>
   <body>
-    <p>
-      <hs-tooltip text="Web Components are a set of standards"
-        >My Webcomponents</hs-tooltip
-      >
-      Are Awesome
-    </p>
-
-    <hs-tooltip></hs-tooltip>
-
-    <a is="hs-anchor" href="http://www.google.com">Go to</a>
+    <my-collapse-paragraph isCollapsed="true" buttonLabel="Paragraph 1">
+      This is some random long text.
+    </my-collapse-paragraph>
   </body>
 </html>
